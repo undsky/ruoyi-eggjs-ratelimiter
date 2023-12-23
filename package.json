@@ -1,0 +1,47 @@
+{
+  "name": "egg-psyduck-ratelimiter",
+  "version": "1.0.0",
+  "description": "Egg plugin for ratelimiter",
+  "author": "姜彦汐 <https://www.undsky.com>",
+  "license": "MIT",
+  "eggPlugin": {
+    "name": "ratelimiter"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "ratelimiter"
+  ],
+  "dependencies": {
+    "ioredis": "^5.3.2",
+    "rate-limiter-flexible": "^4.0.0"
+  },
+  "devDependencies": {
+    "egg": "^3",
+    "egg-bin": "^5",
+    "egg-ci": "^2",
+    "egg-mock": "^5",
+    "eslint": "^8",
+    "eslint-config-egg": "^12"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov"
+  },
+  "files": [
+    "app.js",
+    "agent.js",
+    "config",
+    "app"
+  ],
+  "ci": {
+    "version": "16, 18"
+  }
+}
