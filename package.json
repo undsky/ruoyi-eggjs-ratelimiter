@@ -1,6 +1,6 @@
 {
   "name": "egg-psyduck-ratelimiter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Egg plugin for ratelimiter",
   "author": "姜彦汐 <https://www.undsky.com>",
   "license": "MIT",
