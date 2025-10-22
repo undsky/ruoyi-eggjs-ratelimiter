@@ -1,9 +1,17 @@
 {
-  "name": "egg-psyduck-ratelimiter",
-  "version": "1.0.2",
+  "name": "ruoyi-eggjs-ratelimiter",
+  "version": "1.1.0",
   "description": "Egg plugin for ratelimiter",
   "author": "姜彦汐 <https://www.undsky.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/undsky/ruoyi-eggjs-ratelimiter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/undsky/ruoyi-eggjs-ratelimiter/issues"
+  },
+  "homepage": "https://github.com/undsky/ruoyi-eggjs-ratelimiter#readme",
   "eggPlugin": {
     "name": "ratelimiter"
   },

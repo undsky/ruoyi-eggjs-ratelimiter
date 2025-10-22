@@ -1,11 +1,11 @@
-# egg-psyduck-ratelimiter
+# ruoyi-eggjs-ratelimiter
 
 > Egg plugin for ratelimiter
 
 ## 安装
 
 ```bash
-$ npm i egg-psyduck-ratelimiter --save
+$ npm i ruoyi-eggjs-ratelimiter --save
 ```
 
 ## 支持的 egg 版本
@@ -20,7 +20,7 @@ $ npm i egg-psyduck-ratelimiter --save
 // {app_root}/config/plugin.js
 exports.ratelimiter = {
   enable: true,
-  package: "egg-psyduck-ratelimiter",
+  package: "ruoyi-eggjs-ratelimiter",
 };
 ```
 
