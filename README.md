@@ -4,6 +4,25 @@
 
 基于 [rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) 的 Egg.js 限流插件，用于保护 API 免受恶意请求和过载。
 
+## 目录
+
+- [特性](#特性)
+- [安装](#安装)
+- [支持的 egg 版本](#支持的-egg-版本)
+- [开启插件](#开启插件)
+- [配置](#配置)
+- [配置参数说明](#配置参数说明)
+- [限流策略](#限流策略)
+- [工作原理](#工作原理)
+- [响应格式](#响应格式)
+- [日志记录](#日志记录)
+- [常见问题](#常见问题)
+- [完整示例](#完整示例)
+- [测试限流](#测试限流)
+- [完整示例项目](#完整示例项目)
+- [License](#license)
+
+
 ## 特性
 
 - ✅ 基于 IP 地址的请求限流
@@ -262,47 +281,15 @@ done
 
 观察响应头和响应体的变化。
 
-## 相关链接
 
-- [rate-limiter-flexible 文档](https://github.com/animir/node-rate-limiter-flexible)
-- [HTTP 429 状态码说明](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/429)
+## 完整示例项目
 
----
-
-## 关于 ruoyi-eggjs 项目
-
-本插件是 [ruoyi-eggjs](https://github.com/undsky/ruoyi-eggjs) 项目的核心组件之一。
-
-**ruoyi-eggjs** 是一个基于 Egg.js 的企业级后台管理系统，参照若依（RuoYi）架构设计，提供完善的权限管理、用户管理、系统监控等功能，是快速开发企业级应用的最佳选择。
-
-### 主要特性
-
-- 🎯 **完整的权限系统**：基于 RBAC 的权限控制，支持细粒度权限管理
-- 🚀 **开箱即用**：集成常用功能模块，快速启动项目开发
-- 🔧 **MyBatis 风格**：采用 XML 风格的 SQL 编写，熟悉的开发体验
-- 📦 **模块化设计**：松耦合的插件体系，按需使用
-- 🛡️ **企业级安全**：XSS 防护、SQL 注入防护、访问控制等
-- 📊 **系统监控**：在线用户、登录日志、操作日志、定时任务等
-
-### 项目地址
-
-- GitHub: [https://github.com/undsky/ruoyi-eggjs](https://github.com/undsky/ruoyi-eggjs)
-- Gitee: [https://gitee.com/undsky/ruoyi-eggjs](https://gitee.com/undsky/ruoyi-eggjs)
-
-### 相关插件
-
-- [ruoyi-eggjs-cache](https://github.com/undsky/ruoyi-eggjs-cache) - 缓存插件
-- [ruoyi-eggjs-mybatis](https://github.com/undsky/ruoyi-eggjs-mybatis) - MyBatis 集成
-- [ruoyi-eggjs-mysql](https://github.com/undsky/ruoyi-eggjs-mysql) - MySQL 连接
-- [ruoyi-eggjs-ratelimiter](https://github.com/undsky/ruoyi-eggjs-ratelimiter) - 限流插件
-- [ruoyi-eggjs-sqlite](https://github.com/undsky/ruoyi-eggjs-sqlite) - SQLite 支持
-- [ruoyi-eggjs-handlebars](https://github.com/undsky/ruoyi-eggjs-handlebars) - Handlebars 模板
+参考 [ruoyi-eggjs](https://github.com/undsky/ruoyi-eggjs) 项目查看完整使用示例。
 
 ### 联系方式
 
-- 📮 **Issues**: [提交问题或建议](https://github.com/undsky/ruoyi-eggjs/issues)
-- 🌐 **官网**: [https://www.undsky.com](https://www.undsky.com)
-- 💬 **讨论**: [GitHub Discussions](https://github.com/undsky/ruoyi-eggjs/discussions)
+- 🌐 **网站**: [https://www.undsky.com](https://www.undsky.com)
+- 📮 **Issues**: [提交问题或建议](https://github.com/undsky/ruoyi-eggjs-ratelimiter/issues)
 
 ### 贡献指南
 
