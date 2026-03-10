@@ -4,6 +4,10 @@
 
 基于 [rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) 的 Egg.js 限流插件，用于保护 API 免受恶意请求和过载。
 
+| 公众号                                       | 微信交流群                                                      |
+| -------------------------------------------- | --------------------------------------------------------------- |
+| ![公众号](https://cdn.undsky.com/img/gh.jpg) | ![微信交流群](https://cdn.undsky.com/img/doudouqun.jpg?v=2.0.1) |
+
 ## 目录
 
 - [特性](#特性)
@@ -13,13 +17,16 @@
 - [配置](#配置)
 - [配置参数说明](#配置参数说明)
 - [限流策略](#限流策略)
-- [工作原理](#工作原理)
 - [响应格式](#响应格式)
 - [日志记录](#日志记录)
+- [工作原理](#工作原理)
 - [常见问题](#常见问题)
 - [完整示例](#完整示例)
 - [测试限流](#测试限流)
-- [完整示例项目](#完整示例项目)
+- [完整项目](#完整项目)
+- [请我喝杯咖啡](#请我喝杯咖啡)
+- [联系方式](#联系方式)
+- [贡献指南](#贡献指南)
 - [License](#license)
 
 
@@ -63,9 +70,9 @@ exports.ratelimiter = {
 ```js
 // {app_root}/config/config.default.js
 config.ratelimiter = {
-  points: 1000,      // 允许的请求次数
-  duration: 1000,    // 时间窗口（毫秒）
-  redis: null,       // 不使用 Redis
+  points: 1000, // 允许的请求次数
+  duration: 1000, // 时间窗口（毫秒）
+  redis: null, // 不使用 Redis
 };
 ```
 
@@ -76,12 +83,12 @@ config.ratelimiter = {
 ```js
 // {app_root}/config/config.default.js
 config.ratelimiter = {
-  points: 100,       // 每个时间窗口允许的请求次数
-  duration: 60,      // 时间窗口（秒）
+  points: 100, // 每个时间窗口允许的请求次数
+  duration: 60, // 时间窗口（秒）
   redis: {
     port: 6379,
-    host: '127.0.0.1',
-    password: 'your-password',
+    host: "127.0.0.1",
+    password: "your-password",
     db: 0,
   },
 };
@@ -89,11 +96,11 @@ config.ratelimiter = {
 
 ## 配置参数说明
 
-| 参数 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| points | Number | 1000 | 时间窗口内允许的最大请求次数 |
-| duration | Number | 1000 | 时间窗口大小，使用内存存储时单位为毫秒，使用 Redis 时单位为秒 |
-| redis | Object | null | Redis 配置对象，为 null 时使用内存存储 |
+| 参数     | 类型   | 默认值 | 说明                                                          |
+| -------- | ------ | ------ | ------------------------------------------------------------- |
+| points   | Number | 1000   | 时间窗口内允许的最大请求次数                                  |
+| duration | Number | 1000   | 时间窗口大小，使用内存存储时单位为毫秒，使用 Redis 时单位为秒 |
+| redis    | Object | null   | Redis 配置对象，为 null 时使用内存存储                        |
 
 ## 限流策略
 
@@ -111,7 +118,7 @@ config.ratelimiter = {
 // 登录接口：每分钟最多 5 次尝试
 config.ratelimiter = {
   points: 5,
-  duration: 60,  // 秒（使用 Redis）
+  duration: 60, // 秒（使用 Redis）
   redis: {
     // Redis 配置
   },
@@ -124,7 +131,7 @@ config.ratelimiter = {
 // 通用 API：每秒最多 10 次请求
 config.ratelimiter = {
   points: 10,
-  duration: 1,  // 秒（使用 Redis）
+  duration: 1, // 秒（使用 Redis）
   redis: {
     // Redis 配置
   },
@@ -137,7 +144,7 @@ config.ratelimiter = {
 // 开发环境：每秒 1000 次请求（基本不限制）
 config.ratelimiter = {
   points: 1000,
-  duration: 1000,  // 毫秒（使用内存）
+  duration: 1000, // 毫秒（使用内存）
   redis: null,
 };
 ```
@@ -155,6 +162,7 @@ config.ratelimiter = {
 **HTTP 状态码：** 200（注意：body 中的 code 为 429）
 
 **响应头：**
+
 ```
 Retry-After: 5.5                           // 多少秒后可以重试
 X-RateLimit-Limit: 100                     // 时间窗口内的请求限制
@@ -163,6 +171,7 @@ X-RateLimit-Reset: Mon%20Jan%2001%202024... // 限流重置时间
 ```
 
 **响应体：**
+
 ```json
 {
   "code": 429,
@@ -199,10 +208,10 @@ X-RateLimit-Reset: Mon%20Jan%2001%202024... // 限流重置时间
 
 ### 1. 为什么选择 Redis 还是内存？
 
-| 存储方式 | 优点 | 缺点 | 适用场景 |
-| --- | --- | --- | --- |
-| **内存** | 速度快，无需额外服务 | 重启丢失，单机限流 | 开发环境、单机部署 |
-| **Redis** | 持久化，分布式共享 | 需要 Redis 服务 | 生产环境、集群部署 |
+| 存储方式  | 优点                 | 缺点               | 适用场景           |
+| --------- | -------------------- | ------------------ | ------------------ |
+| **内存**  | 速度快，无需额外服务 | 重启丢失，单机限流 | 开发环境、单机部署 |
+| **Redis** | 持久化，分布式共享   | 需要 Redis 服务    | 生产环境、集群部署 |
 
 ### 2. 如何针对不同路由设置不同的限流策略？
 
@@ -229,7 +238,7 @@ Egg.js 配置：
 
 ```js
 // config/config.default.js
-config.proxy = true;  // 启用代理模式，信任 X-Forwarded-For
+config.proxy = true; // 启用代理模式，信任 X-Forwarded-For
 ```
 
 ### 4. 限流时间窗口的单位为什么不一致？
@@ -245,26 +254,26 @@ config.proxy = true;  // 启用代理模式，信任 X-Forwarded-For
 // config/plugin.js
 exports.ratelimiter = {
   enable: true,
-  package: 'ruoyi-eggjs-ratelimiter',
+  package: "ruoyi-eggjs-ratelimiter",
 };
 
 // config/config.prod.js
 exports.ratelimiter = {
-  points: 100,        // 每分钟 100 次请求
-  duration: 60,       // 60 秒
+  points: 100, // 每分钟 100 次请求
+  duration: 60, // 60 秒
   redis: {
     port: 6379,
-    host: '127.0.0.1',
-    password: '',
+    host: "127.0.0.1",
+    password: "",
     db: 0,
   },
 };
 
 // config/config.local.js
 exports.ratelimiter = {
-  points: 1000,       // 开发环境宽松限制
-  duration: 1000,     // 每秒 1000 次
-  redis: null,        // 使用内存存储
+  points: 1000, // 开发环境宽松限制
+  duration: 1000, // 每秒 1000 次
+  redis: null, // 使用内存存储
 };
 ```
 
@@ -281,17 +290,22 @@ done
 
 观察响应头和响应体的变化。
 
-
-## 完整示例项目
+## 完整项目
 
 参考 [ruoyi-eggjs](https://github.com/undsky/ruoyi-eggjs) 项目查看完整使用示例。
 
-### 联系方式
+## 请我喝杯咖啡
+
+如果项目对你有帮助，可以请我喝杯咖啡 ☕️
+
+<img src="https://cdn.undsky.com/img/weixin10.jpg" max-width="300" height="500" /> <img src="https://cdn.undsky.com/img/zhifubao10.jpg" max-width="300" height="500" />
+
+## 联系方式
 
 - 🌐 **网站**: [https://www.undsky.com](https://www.undsky.com)
 - 📮 **Issues**: [提交问题或建议](https://github.com/undsky/ruoyi-eggjs-ratelimiter/issues)
 
-### 贡献指南
+## 贡献指南
 
 欢迎提交 Issue 和 Pull Request！
 
